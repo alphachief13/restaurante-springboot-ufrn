@@ -1,5 +1,7 @@
 package com.example.demo.layers.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;  // Importar a anotação
+
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -8,8 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
-// fazer ligação one to one com produto
 
 @Entity
 public class Categoria {
@@ -21,7 +21,9 @@ public class Categoria {
     @Column(nullable = false)
     private String nome;
 
+    // Usando @JsonIgnore para evitar recursão infinita
     @OneToMany(mappedBy = "categoria")
+    @JsonIgnore
     private List<Produto> produtos;
 
     public Long getId() {
@@ -47,6 +49,4 @@ public class Categoria {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-
-
 }

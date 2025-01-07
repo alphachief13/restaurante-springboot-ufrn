@@ -1,5 +1,7 @@
 package com.example.demo.layers.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;  // Para evitar a recursão no Produto
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Produto {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +22,7 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
+    @JsonBackReference // Para evitar recursão infinita de Categoria -> Produto -> Categoria
     private Categoria categoria;
 
     public Long getId() {
@@ -45,7 +48,4 @@ public class Produto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
-
-
 }
