@@ -13,8 +13,13 @@ import com.example.demo.layers.repositories.ClienteRepository;
 
 @Service
 public class ClienteService {
-     @Autowired
+    @Autowired
     ClienteRepository clienteRepository;
+
+    public Cliente obterCliente(Long idCliente) throws ValidacaoException {
+        return clienteRepository.findById(idCliente)
+                .orElseThrow(() -> new ValidacaoException("Cliente não encontrado com o ID: " + idCliente));
+    }
 
     public Cliente cadastrarCliente(Cliente cliente) throws ValidacaoException {
 

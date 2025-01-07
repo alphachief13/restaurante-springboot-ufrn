@@ -19,10 +19,11 @@ public class WebConfig  {
             .cors(cors -> cors.configure(http))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorizeConfig ->
-                authorizeConfig
-                    .requestMatchers(HttpMethod.POST,"/clientes").permitAll()
-                    .requestMatchers(HttpMethod.PUT,"/clientes").permitAll()
-                    .requestMatchers(HttpMethod.DELETE,"/clientes/{id:[0-9]+}").permitAll()
+            authorizeConfig
+            .requestMatchers(HttpMethod.GET,"/cliente/{id:[0-9]+}").permitAll()
+                    .requestMatchers(HttpMethod.POST,"/cliente").permitAll()
+                    .requestMatchers(HttpMethod.PUT,"/cliente").permitAll()
+                    .requestMatchers(HttpMethod.DELETE,"/cliente/{id:[0-9]+}").permitAll()
                     .requestMatchers(HttpMethod.GET, "/compras/{nome:.*}").permitAll()
 
                 
