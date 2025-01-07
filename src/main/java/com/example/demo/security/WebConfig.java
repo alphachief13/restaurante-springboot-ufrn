@@ -26,6 +26,20 @@ public class WebConfig  {
                     .requestMatchers(HttpMethod.DELETE,"/cliente/{id:[0-9]+}").permitAll()
                     .requestMatchers(HttpMethod.GET, "/compras/{nome:.*}").permitAll()
 
+                    .requestMatchers(HttpMethod.GET, "/produto").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/produto/{id:[0-9]+}").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/produto").permitAll()
+                    
+                    .requestMatchers(HttpMethod.PUT, "/produto/{id:[0-9]+}").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/produto/{id:[0-9]+}").permitAll()
+                    
+                    .requestMatchers(HttpMethod.GET, "/categoria").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/categoria/{id:[0-9]+}").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/categoria").permitAll()
+                    
+                    .requestMatchers(HttpMethod.PUT, "/categoria/{id:[0-9]+}").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/categoria/{id:[0-9]+}").permitAll()
+
                 
             ).build();
     }
